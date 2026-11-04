@@ -16,7 +16,7 @@ public class TeleOpBindings {
     private final GamepadButton intakeIn;
     private final GamepadButton intakeOut;
 
-    public TeleOpBindings(GamepadEx driver1, Morpheus robot) {
+    public TeleOpBindings(GamepadEx driver1, GamepadEx driver2, Morpheus robot) {
         this.driver1 = driver1;
         this.robot = robot;
 
