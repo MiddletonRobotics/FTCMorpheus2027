@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.seattlesolvers.solverslib.command.CommandOpMode;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Morpheus;
 import org.firstinspires.ftc.teamcode.TeleOpBindings;
+@TeleOp
 
 public class MainTeleOp extends CommandOpMode {
     @Override
