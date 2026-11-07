@@ -6,6 +6,7 @@ import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Morpheus;
 import org.firstinspires.ftc.teamcode.TeleOpBindings;
+@TeleOp
 
 @TeleOp(name = "TeleOpMorph")
 public class MainTeleOp extends CommandOpMode {
