@@ -20,10 +20,9 @@ public class blueTeleOp extends CommandOpMode {
         robot.drivetrain.getFollower().setPose(new Pose(0, 0, Math.toRadians(0)));
 
         GamepadEx driver1 = new GamepadEx(gamepad1);
-        GamepadEx driver2 = new GamepadEx(gamepad2);
 
         // init controller bindings
-        TeleOpBindings bindings = new TeleOpBindings(driver1, driver2, robot);
+        TeleOpBindings bindings = new TeleOpBindings(driver1, robot);
 
         // actually set the bindings to the control map, and config the default commands
         bindings.controlMap();

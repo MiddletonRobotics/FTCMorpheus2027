@@ -23,7 +23,7 @@ public class RedTeleOp extends CommandOpMode {
         GamepadEx driver2 = new GamepadEx(gamepad2);
 
         // init controller bindings
-        TeleOpBindings bindings = new TeleOpBindings(driver1, driver2, robot);
+        TeleOpBindings bindings = new TeleOpBindings(driver1, robot);
 
         // actually set the bindings to the control map, and config the default commands
         bindings.controlMap();

@@ -19,6 +19,7 @@ public class TeleOpBindings {
     // intake button declarations
     private final GamepadButton intakeIn;
     private final GamepadButton intakeOut;
+    private final GamepadButton intakeStop; // Triangle on PS5
 
     // catapult button/trigger declarations
     private final Trigger catapultLaunch; // R2 trigger (> 0.5)
@@ -31,6 +32,7 @@ public class TeleOpBindings {
 // intake
         intakeIn = new GamepadButton(driver1, GamepadKeys.Button.A);
         intakeOut = new GamepadButton(driver1, GamepadKeys.Button.B);
+        intakeStop = new GamepadButton(driver1, GamepadKeys.Button.Y); // Y = Triangle on PS5
 
 // catapult controls setup
         catapultLaunch = new Trigger(() -> driver1.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER) > 0.5);
@@ -39,8 +41,9 @@ public class TeleOpBindings {
 
     public void controlMap() {
 // intake
-        intakeIn.whenActive(() -> robot.intake.intake(1));
-        intakeOut.whenActive(() -> robot.intake.intake(-1));
+        intakeIn.whenActive(() -> robot.intake.intake(0.7));
+        intakeOut.whenActive(() -> robot.intake.intake(-0.7));
+        intakeStop.whenActive(() -> robot.intake.intake(0.0)); // Triangle = stop intake
 
 // catapult: R2 = launch, R1 = lower (one press each)
         catapultLaunch.whenActive(new SequentialCommandGroup(

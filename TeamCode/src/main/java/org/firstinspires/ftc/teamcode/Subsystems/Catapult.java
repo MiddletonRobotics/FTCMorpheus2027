@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 public class Catapult extends SubsystemBase{
-    private final DcMotor catapultRight;
-    private final DcMotor catapultLeft;
+    private DcMotor catapultRight;
+    private DcMotor catapultLeft;
 
 
     public Catapult(HardwareMap hardwareMap, String name) {
