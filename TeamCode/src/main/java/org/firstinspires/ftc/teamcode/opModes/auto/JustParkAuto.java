@@ -1,10 +1,7 @@
-package org.firstinspires.ftc.teamcode.OpModes.Auto;
-
-import com.pedropathing.api.Paths;
+package org.firstinspires.ftc.teamcode.opModes.auto;
 
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.math.Pose;
-import com.pedropathing.paths.Path;
 import com.pedropathing.paths.Path;
 import com.pedropathing.paths.interpolator.Interpolator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;

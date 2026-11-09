@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.samples;
+package org.firstinspires.ftc.teamcode.utilities.samples;
 
 
 import com.pedropathing.follower.Follower;
@@ -9,7 +9,11 @@ import com.seattlesolvers.solverslib.util.TelemetryData;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 
-@TeleOp
+
+// THIS OPMODE HAS BEEN COMMENTED OUT!
+// YOU WILL NO LONGER SEE THIS FILE IN TELEOP SELECTION!
+// TO UNDO, UNCOMMENT THE FOLLOWING LINE!
+// @TeleOp
 public class PedroTeleOpSample extends CommandOpMode {
     Follower follower;
     TelemetryData telemetryData = new TelemetryData(telemetry);

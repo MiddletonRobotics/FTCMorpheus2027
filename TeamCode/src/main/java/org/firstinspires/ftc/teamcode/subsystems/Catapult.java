@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Subsystems;
+package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -8,7 +8,7 @@ public class Catapult extends SubsystemBase{
     private DcMotor catapultLeft;
 
 
-    public Catapult(HardwareMap hardwareMap, String name) {
+    public Catapult(HardwareMap hardwareMap) {
 // Make sure "catapult" matches your config on the Driver Station
         catapultRight = hardwareMap.get(DcMotor.class, "catapultRight");
         catapultLeft = hardwareMap.get(DcMotor.class, "catapultLeft");

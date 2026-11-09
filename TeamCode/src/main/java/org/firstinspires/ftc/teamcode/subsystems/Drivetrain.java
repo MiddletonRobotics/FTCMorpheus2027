@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Subsystems;
+package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.pedropathing.follower.Follower;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 public class Drivetrain extends SubsystemBase {
     private final Follower follower;
 
-    public Drivetrain(final HardwareMap hMap, final String name) {
+    public Drivetrain(final HardwareMap hMap) {
         follower = Constants.createFollower(hMap);
     }
 

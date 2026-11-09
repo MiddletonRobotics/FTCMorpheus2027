@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.samples;
+package org.firstinspires.ftc.teamcode.utilities.samples;
 
 import static com.pedropathing.api.Paths.line;
 
@@ -23,7 +23,11 @@ import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
  * Shows every constructor of the Pedro commands, run one after another in a SequentialCommandGroup.
  * For a full autonomous, look at PedroAutoSample.
  */
-@Autonomous
+
+// THIS OPMODE HAS BEEN COMMENTED OUT!
+// YOU WILL NO LONGER SEE THIS FILE IN AUTO SELECTION!
+// TO UNDO, UNCOMMENT THE FOLLOWING LINE!
+// @Autonomous
 public class PedroCommands extends CommandOpMode {
     Follower follower;
 
