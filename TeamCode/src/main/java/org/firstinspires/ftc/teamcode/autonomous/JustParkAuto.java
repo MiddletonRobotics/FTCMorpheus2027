@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opModes.auto;
+package org.firstinspires.ftc.teamcode.autonomous;
 
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.math.Pose;

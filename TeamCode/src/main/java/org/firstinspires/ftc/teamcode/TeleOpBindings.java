@@ -67,9 +67,9 @@ public class TeleOpBindings {
     public void configureDefaultCommands() {
         drivetrain.setDefaultCommand(new DrivetrainController(
                 drivetrain,
-                () -> driver1.getLeftY(),
-                () -> -driver1.getRightX(),
-                () -> -driver1.getLeftX()
+                () -> -driver1.getLeftY(),
+                () -> driver1.getRightX(),
+                () -> driver1.getLeftX()
         ));
     }
 }
