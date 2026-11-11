@@ -169,7 +169,7 @@ public final class SoftwareChecks {
         c = cat(); in = inputs(); fire(c, in); in.shotComplete = true; c.update(.5, in); in.home = false; c.update(5.5, in);
         check(c.state() == CatapultStateMachine.State.FAULT, "recovery timeout");
         for (int phase = 0; phase < 5; phase++) {
-            for (int fault = 0; fault < 5; fault++) {
+            for (int fault = 0; fault < 6; fault++) {
                 c = cat(); in = inputs();
                 if (phase == 1) load(c, in);
                 if (phase == 2) hold(c, in);
@@ -180,6 +180,7 @@ public final class SoftwareChecks {
                 if (fault == 2) in.limitExceeded = true;
                 if (fault == 3) in.sensorsHealthy = false;
                 if (fault == 4) in.hardwareVerified = false;
+                if (fault == 5) in.holdingMechanismFault = true;
                 c.update(.6, in);
                 check(c.state() == CatapultStateMachine.State.FAULT && !c.loadRequested()
                         && !c.releaseRequested() && c.retainRequested(), "fault suppresses loading/release in every state");

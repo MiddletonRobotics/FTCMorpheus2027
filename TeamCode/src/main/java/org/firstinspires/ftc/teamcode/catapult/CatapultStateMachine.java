@@ -13,6 +13,8 @@ public final class CatapultStateMachine {
         public boolean retentionConfirmed, fullyLoaded, home, shotComplete;
         /** Future adapter ORs both motors' measured current alarms, limits and synchronization faults. */
         public boolean overCurrent, limitExceeded;
+        /** A known failed retaining spring/latch blocks loading and firing, including from IDLE. */
+        public boolean holdingMechanismFault;
     }
 
     private final double loadTimeout, fireTimeout, recoveryTimeout;
@@ -41,6 +43,7 @@ public final class CatapultStateMachine {
         previousLoad = in.loadHeld;
         previousFire = in.firePressed;
         if (in.emergencyStop) { fail("Emergency stop"); return; }
+        if (in.holdingMechanismFault) { fail("Holding mechanism failed"); return; }
         if (in.overCurrent || in.limitExceeded) { fail("Current/travel/synchronization limit"); return; }
         if (!in.hardwareVerified || !in.sensorsHealthy) { fail("Hardware or sensors not verified"); return; }
 

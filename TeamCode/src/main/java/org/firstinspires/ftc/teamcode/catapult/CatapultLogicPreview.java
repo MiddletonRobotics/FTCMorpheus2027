@@ -26,11 +26,13 @@ public final class CatapultLogicPreview extends OpMode {
         in.shotComplete = gamepad1.x;
         in.overCurrent = gamepad1.left_bumper;
         in.limitExceeded = gamepad1.right_bumper;
+        in.holdingMechanismFault = gamepad1.dpad_down;
         model.update(System.nanoTime() / 1e9, in);
         telemetry.addLine("LOGIC ONLY: no motors or latch servo are mapped.");
         telemetry.addData("Gamepad 2", "LB load; RT + A deliberate fire; BACK fault");
         telemetry.addData("Synthetic gamepad 1 sensors", "A home, B retention, Y loaded, X shot complete");
         telemetry.addData("Fault injection", "gamepad 1 LB current, RB overtravel; BACK E-stop");
+        telemetry.addData("Retaining spring failure", "gamepad 1 DPAD DOWN");
         telemetry.addData("State", model.state());
         telemetry.addData("Fault", model.fault());
         telemetry.addData("Advisory requests", "load=%s release=%s retain=%s",
