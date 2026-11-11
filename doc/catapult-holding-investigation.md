@@ -8,7 +8,7 @@ Baseline commit: `cb9775ec53fb336e41d1ccf98baa92d34766bfeb`.
 - `TeleOpBindings.java` binds driver 1 R2 (>0.5) to full positive power for 500 ms, and R1 to negative power for 800 ms. Those are press-triggered timed actions, not hold-to-load/release-to-retain behavior. They are not measured load/shot limits. Interrupted timed sequences can skip their final zero-power command; characterize cancellation before reusing them for tensioning.
 - No catapult CAD, load curve, gearbox identification, spring specification, latch mechanism or wiring configuration was established from the repository tree. A source declaration cannot prove the installed motors, wiring, directions, gearing, feedback or mechanism travel.
 
-The existing TeleOp and catapult classes are **unchanged**. New logic does not retrofit a holding mode into them.
+These are findings from the baseline. The subsequent [manual control change](catapult-controls.md) makes R1 lower only while held, with the existing 800 ms maximum, shared command ownership and explicit stop cleanup. It does not add a secure holding mode.
 
 ## Holding choices
 
@@ -52,7 +52,7 @@ Faults suppress loading and release requests and retain the latch request. Emerg
 - **Either BACK:** fault/emergency stop.
 - **Gamepad 1 A/B/Y/X:** synthetic home / retention / fully-loaded / shot-complete signals. These are manually injected facts, not real sensor evidence. LB/RB inject overcurrent/overtravel.
 
-The preview maps no motors, servos, drivetrain or existing Catapult subsystem. Its 5/1/5 second timeouts are illustrative logic-test settings only. Desktop tests exercise the same state machine without a Control Hub. The existing driver 1 R1/R2 controls still behave as before in the existing TeleOp.
+The preview maps no motors, servos, drivetrain or existing Catapult subsystem. Its 5/1/5 second timeouts are illustrative logic-test settings only. Desktop tests exercise the same state machine without a Control Hub. Actual driver 1 R1/R2 behavior is documented in the [manual controls guide](catapult-controls.md).
 
 ## Measurements still required
 

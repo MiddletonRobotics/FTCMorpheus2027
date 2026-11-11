@@ -25,6 +25,9 @@ MORPHEUS_PACKAGE=TeamCode/src/main/java/org/firstinspires/ftc/teamcode
     "$MORPHEUS_PACKAGE/autonomous/DrivePauseParkRoute.java" \
     "$MORPHEUS_PACKAGE/autonomous/DrivePauseParkSequence.java" \
     "$MORPHEUS_PACKAGE/catapult/CatapultStateMachine.java" \
-    tools/autonomous/java/SoftwareChecks.java
+    "$MORPHEUS_PACKAGE/catapult/CatapultManualControl.java" \
+    tools/autonomous/java/SoftwareChecks.java \
+    tools/autonomous/java/CatapultManualChecks.java
 "$MORPHEUS_JAVA" -cp "build/software-checks/classes:$MORPHEUS_PEDRO_JAR" SoftwareChecks build/software-checks/trace.csv
+"$MORPHEUS_JAVA" -cp "build/software-checks/classes:$MORPHEUS_PEDRO_JAR" CatapultManualChecks
 python3 tools/autonomous/render_trace.py

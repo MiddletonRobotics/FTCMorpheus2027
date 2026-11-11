@@ -11,12 +11,13 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 
 @TeleOp (name = "RedTeleOp")
 public class RedTeleOp extends CommandOpMode {
+    private Catapult catapult;
     @Override
     public void initialize() {
         // Initialize robot, which contains subsystems
         Drivetrain drivetrain = new Drivetrain(hardwareMap);
         Intake intake = new Intake(hardwareMap);
-        Catapult catapult = new Catapult(hardwareMap);
+        catapult = new Catapult(hardwareMap);
 
         // set starting heading for red alliance (180 degrees)
         drivetrain.getFollower().setPose(new Pose(0, 0, Math.toRadians(180)));
@@ -36,5 +37,10 @@ public class RedTeleOp extends CommandOpMode {
     public void run() {
         super.run();
         telemetry.update();
+    }
+
+    @Override
+    public void end() {
+        if (catapult != null) catapult.stop();
     }
 }

@@ -11,11 +11,12 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 
 @TeleOp (name = "BlueTeleOp")
 public class BlueTeleOp extends CommandOpMode {
+    private Catapult catapult;
     @Override
     public void initialize() {
         Drivetrain drivetrain = new Drivetrain(hardwareMap);
         Intake intake = new Intake(hardwareMap);
-        Catapult catapult = new Catapult(hardwareMap);
+        catapult = new Catapult(hardwareMap);
 
         // set starting heading for blue alliance (0 degrees)
         drivetrain.getFollower().setPose(new Pose(0, 0, Math.toRadians(0)));
@@ -35,5 +36,10 @@ public class BlueTeleOp extends CommandOpMode {
     public void run() {
         super.run();
         telemetry.update();
+    }
+
+    @Override
+    public void end() {
+        if (catapult != null) catapult.stop();
     }
 }

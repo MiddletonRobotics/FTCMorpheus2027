@@ -1,6 +1,6 @@
 # Morpheus: drive, simulated shot, park
 
-This is a software-first diagnostic, not a competition autonomous. It never maps or commands a catapult. Existing TeleOp, hardware constants, dependencies and `JustParkAuto` are unchanged.
+This is a software-first diagnostic, not a competition autonomous. It never maps or commands a catapult. Shared hardware constants, dependencies and `JustParkAuto` are unchanged. The separate TeleOp catapult update is described in the [manual controls guide](catapult-controls.md).
 
 ## At home: edit and preview
 
