@@ -1,0 +1,81 @@
+{
+  "version": "2.0.0",
+  "timestamp": "2026-11-10T22:11:12.762Z",
+  "startPoint": {
+    "x": 12,
+    "y": 84,
+    "name": "Demo start - verify placement",
+    "headingDeg": 90
+  },
+  "lines": [
+    {
+      "id": "morpheus-shoot",
+      "color": "#38bdf8",
+      "name": "Proposed shooting position",
+      "waitBeforeMs": 0,
+      "waitAfterMs": 3000,
+      "waitBeforeName": "",
+      "waitAfterName": "",
+      "kind": "atomic",
+      "endPoint": {
+        "x": 24,
+        "y": 106
+      },
+      "controlPoints": [
+        {
+          "x": 14,
+          "y": 100
+        }
+      ],
+      "heading": {
+        "type": "linear",
+        "startDeg": 90,
+        "endDeg": 0
+      }
+    },
+    {
+      "id": "morpheus-park",
+      "color": "#4ade80",
+      "name": "Proposed red loading-zone park",
+      "waitBeforeMs": 0,
+      "waitAfterMs": 0,
+      "waitBeforeName": "",
+      "waitAfterName": "",
+      "kind": "atomic",
+      "endPoint": {
+        "x": 12,
+        "y": 106
+      },
+      "controlPoints": [],
+      "heading": {
+        "type": "linear",
+        "startDeg": 0,
+        "endDeg": 180
+      }
+    }
+  ],
+  "shapes": [],
+  "sequence": [
+    {
+      "kind": "path",
+      "lineId": "morpheus-shoot"
+    },
+    {
+      "kind": "path",
+      "lineId": "morpheus-park"
+    }
+  ],
+  "fieldPoints": [],
+  "robot": {
+    "forwardVelocity": 12,
+    "strafeVelocity": 12,
+    "aVelocity": 1.57,
+    "kFriction": 0.1,
+    "rLength": 16,
+    "rWidth": 16,
+    "safetyMargin": 2,
+    "maxAcceleration": 12,
+    "maxDeceleration": 12
+  },
+  "activePaths": []
+}

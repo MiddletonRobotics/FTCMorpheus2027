@@ -27,8 +27,8 @@ public class Catapult extends SubsystemBase{
     }
 
     public void stop() {
-        catapultRight.setPower(0);
-        catapultLeft.setPower(0);
+        try { catapultRight.setPower(0); }
+        finally { catapultLeft.setPower(0); }
     }
 
 
