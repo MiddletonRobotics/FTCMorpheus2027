@@ -30,8 +30,8 @@ public class DrivetrainController extends CommandBase {
     @Override
     public void execute() {
         drivetrain.drive(
-                d_forward.getAsDouble(),
                 d_strafe.getAsDouble(),
+                d_forward.getAsDouble(),
                 d_rotation.getAsDouble()
         );
     }
