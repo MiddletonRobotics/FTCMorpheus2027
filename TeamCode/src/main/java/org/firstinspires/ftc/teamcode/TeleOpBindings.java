@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.seattlesolvers.solverslib.command.InstantCommand;
 import com.seattlesolvers.solverslib.command.SequentialCommandGroup;
-import com.seattlesolvers.solverslib.command.WaitCommand;
+import com.seattlesolvers.solverslib.command.WaitUntilCommand;
 import com.seattlesolvers.solverslib.command.button.GamepadButton;
 import com.seattlesolvers.solverslib.command.button.Trigger;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
@@ -50,26 +50,24 @@ public class TeleOpBindings {
         intakeOut.whenActive(() -> intake.intake(-0.7));
         intakeStop.whenActive(() -> intake.intake(0.0)); // Triangle = stop intake
 
-        // catapult: R2 = launch, R1 = lower (one press each)
+        // catapult: R2 = launch and automatically return home (one press)
         catapultLaunch.whenActive(new SequentialCommandGroup(
-                new InstantCommand(() -> catapult.setPower(1.0), catapult),
-                new WaitCommand(500), // TUNE: launch time in ms
-                new InstantCommand(() -> catapult.setPower(0.0), catapult)
+                new InstantCommand(() -> catapult.goTo(Catapult.FIRE_POSITION, Catapult.LAUNCH_POWER), catapult),
+                new WaitUntilCommand(catapult::atTarget).withTimeout(1000), // TUNE: max wait in ms
+                new InstantCommand(() -> catapult.goTo(Catapult.HOME_POSITION, Catapult.RETURN_POWER), catapult)
         ));
 
-        catapultReset.whenActive(new SequentialCommandGroup(
-                new InstantCommand(() -> catapult.setPower(-1), catapult),
-                new WaitCommand(800), // TUNE: lower time in ms
-                new InstantCommand(() -> catapult.setPower(0.0), catapult)
-        ));
+        // catapult: R1 = send arm home manually (backup if it ever gets stuck)
+        catapultReset.whenActive(new InstantCommand(
+                () -> catapult.goTo(Catapult.HOME_POSITION, Catapult.RETURN_POWER), catapult));
     }
 
     public void configureDefaultCommands() {
         drivetrain.setDefaultCommand(new DrivetrainController(
                 drivetrain,
                 () -> -driver1.getLeftY(),
-                () -> driver1.getRightX(),
-                () -> driver1.getLeftX()
+                driver1::getRightX,
+                driver1::getLeftX
         ));
     }
 }

@@ -11,6 +11,7 @@ public class Intake extends SubsystemBase {
         intakeMotor = new Motor(hMap, "intakeMotor", Motor.GoBILDA.RPM_435);
 
         intakeMotor.setRunMode(Motor.RunMode.RawPower);
+        intakeMotor.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE); // stops quickly when power is 0
     }
 
     public void intake(double power) {

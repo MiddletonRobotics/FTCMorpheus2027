@@ -28,6 +28,7 @@ public class Drivetrain extends SubsystemBase {
         follower.update();
     }
 
+
     public Follower getFollower() {
         return follower;
     }
