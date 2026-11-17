@@ -3,13 +3,20 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 
 public class Catapult extends SubsystemBase {
     private final DcMotor leftMotor;
     private final DcMotor rightMotor;
 
-    // TUNE: read encoder values from telemetry with the arm at each position
+    // goBILDA Yellow Jacket 60 RPM (5203-2402-0100) specifications.
+    // https://www.gobilda.com/content/spec_sheets/5203-2402-0100_spec_sheet.pdf
+    private static final double MOTOR_RPM = 60.0;
+    private static final double MOTOR_GEAR_RATIO = 99.5;
+    private static final double MOTOR_TICKS_PER_REV = 2786.2;
+
+    // TUNE: recheck these encoder positions on the 60 RPM gearbox before firing.
     public static final int HOME_POSITION = 0;
     public static final int FIRE_POSITION = 300;
     public static final double LAUNCH_POWER = 1.0;
@@ -26,6 +33,13 @@ public class Catapult extends SubsystemBase {
         rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         for (DcMotor m : new DcMotor[]{leftMotor, rightMotor}) {
+            // Clone so configuring the catapult cannot change other motors' metadata.
+            MotorConfigurationType motorType = m.getMotorType().clone();
+            motorType.setMaxRPM(MOTOR_RPM);
+            motorType.setGearing(MOTOR_GEAR_RATIO);
+            motorType.setTicksPerRev(MOTOR_TICKS_PER_REV);
+            m.setMotorType(motorType);
+
             m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             m.setTargetPosition(0);
